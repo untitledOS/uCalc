@@ -81,5 +81,6 @@ if __name__ == '__main__':
     mainWindow = MainWindow()
     mainWindow.show()
     app.setStyle("Windows")
-    app.setStyleSheet("QPushButton {border: 1px solid grey; border-radius: 10px; background-color: transparent; font-size: 20px; margin: 2px}")
+    # buttons turn grey when clicked
+    app.setStyleSheet("QPushButton {border: 1px solid grey; border-radius: 10px; background-color: transparent; font-size: 20px; margin: 2px} QPushButton:pressed {background-color: #4bc3ff}")
     sys.exit(app.exec_())
