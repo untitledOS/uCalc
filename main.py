@@ -72,5 +72,5 @@ if __name__ == '__main__':
     mainWindow = MainWindow()
     mainWindow.show()
     app.setStyle("Windows")
-    app.setStyleSheet("QPushButton {border: 1px solid grey; border-radius: 10px; background-color: transparent; color: white; font-size: 20px; margin: 2px}")
+    app.setStyleSheet("QPushButton {border: 1px solid grey; border-radius: 10px; background-color: transparent; font-size: 20px; margin: 2px}")
     sys.exit(app.exec_())
