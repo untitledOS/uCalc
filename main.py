@@ -13,7 +13,7 @@ class MainWindow(QWidget):
 
         buttons = ["%", "CE", "C", "⌫", "1/x", "x²", "√", "/", "7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+", "+/-", "0", ".", "="]
         self.numbers = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"]
-        self.operators = ["+", "-", "*", "/", "x²", "√", "1/x", "%"]
+        self.operators = ["+", "-", "*", "/", "√", "%"]
 
         layout = QVBoxLayout()
         layout.setSpacing(0)
@@ -49,6 +49,15 @@ class MainWindow(QWidget):
             self.textbox.setText(self.textbox.text() + button.text())
         elif button.text() in self.operators:
             self.textbox.setText(self.textbox.text() + " " + button.text() + " ")
+        elif button.text() == "+/-":
+            if self.textbox.text().startswith("-"):
+                self.textbox.setText(self.textbox.text()[1:])
+            else:
+                self.textbox.setText("-" + self.textbox.text())
+        elif button.text() == "x²":
+            self.textbox.setText(self.textbox.text() + "²")
+        elif button.text() == "1/x":
+            self.textbox.setText("1/" + self.textbox.text())
         elif button.text() == "CE":
             self.textbox.setText("")
         elif button.text() == "C":
@@ -57,7 +66,7 @@ class MainWindow(QWidget):
             self.textbox.setText(self.textbox.text()[:-1])
         elif button.text() == "=" or "QLineEdit" in str(button):
             try:        
-                result = eval(self.textbox.text().replace("x²", "**2").replace("√", "**0.5").replace("1/x", "**-1").replace("%", "/100"))
+                result = eval(self.textbox.text().replace("²", "**2").replace("√", "**0.5").replace("1/x", "**-1").replace("%", "/100"))
                 try:
                     result = round(result, 13)
                 except:
